@@ -1,5 +1,5 @@
 function getWeather(){
-    const apikey = "6488eb50a52f99b0c4030619826cd615";
+    const apikey = "API KEY"
     const city = document.getElementById("city").value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=imperial&appid=${apikey}`
 
