@@ -1,5 +1,5 @@
 function getWeather(){
-    const apikey = "API KEY"
+    const apikey = "6488eb50a52f99b0c4030619826cd615";
     const city = document.getElementById("city").value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=imperial&appid=${apikey}`
 
@@ -7,6 +7,7 @@ function getWeather(){
     .then(response => response.json())
     .then(data => {
         displayWeather(data);
+        console.log(data)
     })
     .catch(error => {
         console.log(error)
@@ -32,11 +33,34 @@ document.getElementById('low').innerText = `Low: ${temp_min}°F`;
 document.getElementById('humidity').innerText = `Humidity: ${humidity}%`;
 document.getElementById('wind').innerText = `Wind: ${speed}mph`;
 
+setBackgroundImage(name);
+
 let milliseconds = 300;
 setTimeout(() =>{
     let weatherInfo = document.querySelector('.weatherInfo');
-    weatherInfo.style.display = "auto"
-    weatherInfo.style.transition = "opacity 2s"
-    weatherInfo.style.opacity = "1"
+    weatherInfo.style.display = "auto";
+    weatherInfo.style.transition = "opacity 2s";
+    weatherInfo.style.opacity = 1;    
 }, milliseconds)
+}
+
+function setBackgroundImage(name) {
+    const apiKey = 'API KEY'
+    const engineID = 'ENGINE ID'
+    const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${engineID}&q=${encodeURIComponent(`${name} city`)}&searchType=image&num=1`;
+
+    fetch(url)
+        .then(response =>response.json())
+        .then(data => {
+            if (data.items && data.items.length > 0) {
+                const imageURL = data.items[0].link;
+                document.body.style.backgroundImage = `url(${imageURL})`;
+                document.body.style.backgroundSize = 'cover';
+            } else {
+                console.error(`No image found for the city ${name}.`)
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching image data:', error);
+        });
 }
