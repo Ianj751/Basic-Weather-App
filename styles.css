@@ -5,6 +5,7 @@ body{
     opacity: 50;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     transition: opacity 1s ease-in-out;
     opacity: 100;
 }
