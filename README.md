@@ -4,3 +4,4 @@
 ### Technologies Used
   HTML, CSS, Javascript, OpenWeather API, Google Custom Search Engine API
 
+![An example image of the website](https://github.com/Ianj751/Basic-Weather-App/assets/136002718/f1f87d0a-ebe2-4b78-876f-12921eaa451a)
